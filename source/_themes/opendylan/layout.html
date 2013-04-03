@@ -35,30 +35,31 @@
 {% endblock %}
 
 {% block header %}
-   <div class="navbar navbar-fixed-top">
-     <div class="navbar-inner">
-       <div class="container">
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-         </a>
-         <img class="logo" src="{{ pathto('_static/opendylan.org/images/dylan-squares.png', 1) }}" alt="Dylan Logo" />
-         <a class="brand" href="{{ pathto('index') }}">Open Dylan</a>
-         <div class="nav-collapse">
-           <ul class="nav">
-           {% for page, caption in navigation_bar -%}
-             <li{% if page == active_page %} class="active"{% endif %}><a href="{{ pathto(page) }}">{{ caption|e }}</a>
-           {% endfor -%}
-           </ul>
-           <form class="navbar-search pull-right" method="get" action="http://www.google.com/cse" id="cse-search-box">
-             <input type="hidden" name="cx" value="014128053697352059339:xr84v5ohkyq" />
-             <input type="hidden" name="ie" value="UTF-8" />
-             <input class="search-query" type="text" name="q" size="16" maxlength="255" value="" />
-           </form>
-         </div>
-       </div>
-     </div>
+  <div id="wrap">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <img class="logo" src="{{ pathto('_static/opendylan.org/images/dylan-squares.png', 1) }}" alt="Dylan Logo" />
+          <a class="brand" href="{{ pathto('index') }}">Open Dylan</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+            {% for page, caption in navigation_bar -%}
+              <li{% if page == active_page %} class="active"{% endif %}><a href="{{ pathto(page) }}">{{ caption|e }}</a>
+            {% endfor -%}
+            </ul>
+            <form class="navbar-search pull-right" method="get" action="http://www.google.com/cse" id="cse-search-box">
+              <input type="hidden" name="cx" value="014128053697352059339:xr84v5ohkyq" />
+              <input type="hidden" name="ie" value="UTF-8" />
+              <input class="search-query" type="text" name="q" size="16" maxlength="255" value="" />
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 {% endblock %}
 
@@ -72,46 +73,48 @@
 {% endblock %}
 
 {% block footer %}
-   <footer class="navbar navbar-static-bottom">
-     <div class="navbar-inner">
-       <div class="container">
-        {%- if show_source and has_source and sourcename %}
-          <p class="pull-left navbar-text">
-          <a href="{{ pathto('_sources/' + sourcename, true)|e }}"
-             rel="nofollow">{{ _('Show Source') }}</a></p>
-        {%- endif %}
-        <p class="pull-right navbar-text">
-        {%- if show_copyright %}
-          {%- if hasdoc('copyright') %}
-            {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
-          {%- else %}
-            {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
-          {%- endif %}
-        {%- endif %}
-        {%- if last_updated %}
-          {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
-        {%- endif %}
-        {%- if show_sphinx %}
-          {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
-        {%- endif %}
-        </p>
-       </div>
-     </div>
-      <script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+    <div id="push"></div>
+  </div><!-- #wrap -->
+  <footer id="footer" class="navbar navbar-static-bottom">
+    <div class="navbar-inner">
+      <div class="container">
+       {%- if show_source and has_source and sourcename %}
+         <p class="pull-left navbar-text">
+         <a href="{{ pathto('_sources/' + sourcename, true)|e }}"
+            rel="nofollow">{{ _('Show Source') }}</a></p>
+       {%- endif %}
+       <p class="pull-right navbar-text">
+       {%- if show_copyright %}
+         {%- if hasdoc('copyright') %}
+           {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
+         {%- else %}
+           {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
+         {%- endif %}
+       {%- endif %}
+       {%- if last_updated %}
+         {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
+       {%- endif %}
+       {%- if show_sphinx %}
+         {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
+       {%- endif %}
+       </p>
+      </div>
+    </div>
+     <script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
 
-      <!-- Piwik -->
-      <script type="text/javascript">
-      var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.opendylan.org/" : "http://piwik.opendylan.org/");
-      document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-      </script><script type="text/javascript">
-      try {
-      var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
-      piwikTracker.trackPageView();
-      piwikTracker.enableLinkTracking();
-      } catch( err ) {}
-      </script><noscript><p><img src="http://piwik.opendylan.org/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
-      <!-- End Piwik Tracking Code -->
-   </footer>
+     <!-- Piwik -->
+     <script type="text/javascript">
+     var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.opendylan.org/" : "http://piwik.opendylan.org/");
+     document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+     </script><script type="text/javascript">
+     try {
+     var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+     piwikTracker.trackPageView();
+     piwikTracker.enableLinkTracking();
+     } catch( err ) {}
+     </script><noscript><p><img src="http://piwik.opendylan.org/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+     <!-- End Piwik Tracking Code -->
+  </footer>
 {% endblock %}
 
 {% block relbar1 %}{% endblock %}

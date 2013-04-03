@@ -1,5 +1,17 @@
-body {
-  padding-top: 50px;
+html, body {
+  height: 100%;
+}
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -42px;
+}
+#wrap > .container {
+  padding-top: 60px;
+}
+#push, #footer {
+  height: 42px;
 }
 .navbar .logo {
   float: left;
@@ -18,7 +30,6 @@ body {
   border-radius:3px;
 }
 footer.navbar {
-  margin-top: 20px;
   margin-bottom: 0;
 }
 .section h2 {
@@ -66,6 +77,10 @@ a.headerlink {
   }
   .bs-docs-sidebar .affix {
     position: relative;
+  }
+  #footer > .navbar-inner {
+    margin-left: -20px;
+    margin-right: -20px;
   }
 }
 
